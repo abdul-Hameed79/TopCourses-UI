@@ -51,7 +51,7 @@ const CourseList = ({category}) => {
                     <CourseCard key={course.id} course={course} category={category} />
                 ))
             ) : (
-                <div className="col-span-3 justify-center items-center h-screen text-center text-white" >
+                <div className="col-span-3 justify-center items-center h-screen text-center text-white text-lg mt-40" >
                     No courses found for the selected category...
                 </div>    
             )}

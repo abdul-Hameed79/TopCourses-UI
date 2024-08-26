@@ -6,8 +6,10 @@ const FilterButtons = ({filterData , setCategory}) => {
         <div className="flex flex-wrap justify-center gap-6 py-4">
            {filterData.map( (data) => (
                 <button className="border text-white bg-slate-900 px-2 py-1 rounded-lg font-medium text-lg hover:bg-white hover:text-black transition duration-300 hover:scale-90"
-                    onClick={ () => HandleCategory(data.title)}>
-                    {data.title}
+                    onClick={ () => HandleCategory(data.title)}
+                    key = {data.id} 
+                >    
+                {data.title}   
                 </button>    
             ))}  
         </div>

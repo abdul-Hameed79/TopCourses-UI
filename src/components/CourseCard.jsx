@@ -22,9 +22,9 @@ const CourseCard = ({course}) => {
                 <div className="relative">
                     <img src={course.image.url} alt={course.title} className="rounded-md object-cover"/>
                     <button 
-                        className="absolute w-7 h-7 bg-white rounded-full right-3 top-32 grid place-items-center flex-wrap"
+                        className="absolute w-7 h-7 bg-white rounded-full right-2 top-32 grid place-items-center flex-wrap"
                         onClick={HandlerToast}>
-                            {liked.includes(course.id) ?  <FcLike fontSize="1.5rem"/> : <FcLikePlaceholder fontSize="1.5rem"/> }
+                            {liked.includes(course.id) ?  <FcLike fontSize="1.3rem"/> : <FcLikePlaceholder fontSize="1.3rem"/> }
                     </button>
                 </div>
                 <h1 className="text-white font-medium text-lg mb-2"> {course.title}  </h1>
