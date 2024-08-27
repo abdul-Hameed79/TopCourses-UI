@@ -45,7 +45,7 @@ const CourseList = ({category}) => {
     const courseList = getCourses();
 
     return (
-        <div className="w-3/4 p-3 grid grid-cols-3 gap-6 flex-wrap mx-auto">
+        <div className="w-3/4 p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 flex-wrap mx-auto">
             {courseList.length > 0 ? (
                 courseList.map( (course) => (
                     <CourseCard key={course.id} course={course} category={category} />

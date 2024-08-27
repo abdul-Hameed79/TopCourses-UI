@@ -17,7 +17,7 @@ const CourseCard = ({course}) => {
     }
 
     return (
-        <div className="bg-slate-800 rounded-lg p-2 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black flex-wrap">
+        <div className="bg-slate-800 rounded-lg p-2 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-black">
             <div>
                 <div className="relative">
                     <img src={course.image.url} alt={course.title} className="rounded-md object-cover"/>
