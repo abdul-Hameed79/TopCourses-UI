@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import CourseCard from "./CourseCard";
 import Spinner from "./Spinner";
 
-const CourseList = ({category}) => {
-    const [courses, setCourses] = useState({});
+const CourseList = ({ category }) => {
+    const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await fetch("https://codehelp-apis.vercel.app/api/get-top-courses");
-                const output = await response.json();
-                setCourses(output.data);
+                const response = await fetch('https://codehelp-apis.vercel.app/api/get-top-courses'); // Example API endpoint
+                const result = await response.json();
+                setCourses(result.data);
             } catch (error) {
-                console.error("Error fetching course data:", error);
+                console.error("Error fetching courses:", error);
             } finally {
                 setLoading(false);
             }
@@ -29,35 +29,28 @@ const CourseList = ({category}) => {
         );
     }
 
-    function getCourses() {
+    const getCourses = () => {
         if (category === "All") {
-            let allCourses = [];
-            Object.values(courses).forEach(array => {
-                array.forEach(courseData => {
-                    allCourses.push(courseData);
-                });
-            });
-            return allCourses;
-        } else {
-            return courses[category] || [];
+            return Object.values(courses).flat();
         }
-    }
+        return courses[category] || [];
+    };
+
     const courseList = getCourses();
 
     return (
-        <div className="w-3/4 p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 flex-wrap mx-auto">
+        <div className="container mx-auto p-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {courseList.length > 0 ? (
-                courseList.map( (course) => (
-                    <CourseCard key={course.id} course={course} category={category} />
+                courseList.map((course) => (
+                    <CourseCard key={course.id} course={course} />
                 ))
             ) : (
-                <div className="col-span-3 justify-center items-center h-screen text-center text-white text-lg mt-40" >
+                <div className="col-span-full mt-40 text-center text-white text-lg h-screen">
                     No courses found for the selected category...
-                </div>    
+                </div>
             )}
         </div>
-    ); 
-    
+    );
 };
 
 export default CourseList;
